@@ -1,0 +1,1987 @@
+# DSI ICP Job Sources Registry
+# Only companies with known headcount 10-200 are valid for final CSV
+# Trust score: 1-10 (10 = highest)
+
+sources:
+
+  # ─── JOB BOARD APIs (PUBLIC) ───────────────────────────────────────────────
+
+  - source_id: remotive_api
+    source_name: Remotive API
+    source_type: api
+    source_family: remotive
+    api_url: https://remotive.com/api/remote-jobs?category=software-dev&limit=100
+    company_name: null
+    company_domain: null
+    headcount_bucket: null
+    hq_country: null
+    target_market_fit: high
+    trust_score: 8
+    enabled: true
+    notes: "Public API, no auth needed. Requires global proof per job."
+
+  - source_id: remoteok_api
+    source_name: RemoteOK API
+    source_type: api
+    source_family: remoteok
+    api_url: https://remoteok.com/api?tag=dev
+    company_name: null
+    company_domain: null
+    headcount_bucket: null
+    hq_country: null
+    target_market_fit: high
+    trust_score: 7
+    enabled: true
+    notes: "Public API. Do NOT treat as automatically worldwide. Verify per job."
+
+  - source_id: himalayas_api
+    source_name: Himalayas API
+    source_type: api
+    source_family: himalayas
+    api_url: https://himalayas.app/jobs/api?category=engineering&limit=100
+    company_name: null
+    company_domain: null
+    headcount_bucket: null
+    hq_country: null
+    target_market_fit: high
+    trust_score: 8
+    enabled: true
+    notes: "Good quality remote jobs. Verify global proof per job."
+
+  - source_id: jobicy_api
+    source_name: Jobicy API
+    source_type: api
+    source_family: jobicy
+    api_url: https://jobicy.com/api/v2/remote-jobs?industry=technology&count=50
+    company_name: null
+    company_domain: null
+    headcount_bucket: null
+    hq_country: null
+    target_market_fit: medium
+    trust_score: 7
+    enabled: true
+    notes: "Public API. Mixed quality, apply strict filters."
+
+  - source_id: arbeitnow_api
+    source_name: Arbeitnow API
+    source_type: api
+    source_family: arbeitnow
+    api_url: https://arbeitnow.com/api/job-board-api
+    company_name: null
+    company_domain: null
+    headcount_bucket: null
+    hq_country: null
+    target_market_fit: medium
+    trust_score: 6
+    enabled: true
+    notes: "Many EU-restricted jobs. Strict reject required."
+
+  - source_id: weworkremotely_rss_prog
+    source_name: WeWorkRemotely Programming RSS
+    source_type: rss
+    source_family: weworkremotely
+    feed_url: https://weworkremotely.com/categories/remote-programming-jobs.rss
+    company_name: null
+    company_domain: null
+    headcount_bucket: null
+    hq_country: null
+    target_market_fit: high
+    trust_score: 8
+    enabled: true
+    notes: "Good source but NOT automatically worldwide. Verify each job."
+
+  - source_id: weworkremotely_rss_devops
+    source_name: WeWorkRemotely DevOps RSS
+    source_type: rss
+    source_family: weworkremotely
+    feed_url: https://weworkremotely.com/categories/remote-devops-sysadmin-jobs.rss
+    company_name: null
+    company_domain: null
+    headcount_bucket: null
+    hq_country: null
+    target_market_fit: high
+    trust_score: 8
+    enabled: true
+    notes: "DevOps specific RSS feed."
+
+  - source_id: workingnomads_rss
+    source_name: Working Nomads Dev RSS
+    source_type: rss
+    source_family: workingnomads
+    feed_url: https://www.workingnomads.com/feed?category=development
+    company_name: null
+    company_domain: null
+    headcount_bucket: null
+    hq_country: null
+    target_market_fit: medium
+    trust_score: 6
+    enabled: true
+    notes: "RSS feed. Verify global proof."
+
+  # ─── GREENHOUSE ATS COMPANIES (VERIFIED HEADCOUNT) ─────────────────────────
+
+  - source_id: greenhouse_posthog
+    source_name: PostHog Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/posthog/jobs?content=true
+    company_name: PostHog
+    company_domain: posthog.com
+    headcount_bucket: "51 to 100"
+    hq_country: United Kingdom
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Open source analytics. Fully distributed worldwide."
+
+  - source_id: greenhouse_linear
+    source_name: Linear Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/linear/jobs?content=true
+    company_name: Linear
+    company_domain: linear.app
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Developer tools. Remote friendly."
+
+  - source_id: greenhouse_cal
+    source_name: Cal.com Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/calcom/jobs?content=true
+    company_name: Cal.com
+    company_domain: cal.com
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Open source scheduling. Fully distributed."
+
+  - source_id: greenhouse_gitpod
+    source_name: Gitpod Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/gitpod/jobs?content=true
+    company_name: Gitpod
+    company_domain: gitpod.io
+    headcount_bucket: "51 to 100"
+    hq_country: Germany
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Cloud dev environments. Globally distributed."
+
+  - source_id: greenhouse_sourcegraph
+    source_name: Sourcegraph Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/sourcegraph/jobs?content=true
+    company_name: Sourcegraph
+    company_domain: sourcegraph.com
+    headcount_bucket: "101 to 200"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Code intelligence. All-remote company."
+
+  - source_id: greenhouse_airbyte
+    source_name: Airbyte Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/airbyte/jobs?content=true
+    company_name: Airbyte
+    company_domain: airbyte.com
+    headcount_bucket: "101 to 200"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Data integration. Remote-friendly."
+
+  - source_id: greenhouse_meilisearch
+    source_name: Meilisearch Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/meilisearch/jobs?content=true
+    company_name: Meilisearch
+    company_domain: meilisearch.com
+    headcount_bucket: "51 to 100"
+    hq_country: France
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Open source search. European but hires globally."
+
+  - source_id: greenhouse_retool
+    source_name: Retool Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/retool/jobs?content=true
+    company_name: Retool
+    company_domain: retool.com
+    headcount_bucket: "101 to 200"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Internal tools builder."
+
+  - source_id: greenhouse_dbt
+    source_name: dbt Labs Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/dbtlabs/jobs?content=true
+    company_name: dbt Labs
+    company_domain: getdbt.com
+    headcount_bucket: "101 to 200"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Data transformation. Remote-first."
+
+  - source_id: greenhouse_prefect
+    source_name: Prefect Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/prefect/jobs?content=true
+    company_name: Prefect
+    company_domain: prefect.io
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Data orchestration. Remote-first."
+
+  - source_id: greenhouse_planetscale
+    source_name: PlanetScale Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/planetscale/jobs?content=true
+    company_name: PlanetScale
+    company_domain: planetscale.com
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Serverless MySQL. Remote first."
+
+  - source_id: greenhouse_supabase
+    source_name: Supabase Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/supabase/jobs?content=true
+    company_name: Supabase
+    company_domain: supabase.com
+    headcount_bucket: "51 to 100"
+    hq_country: Singapore
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Open source Firebase alt. Globally distributed."
+
+  - source_id: greenhouse_novu
+    source_name: Novu Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/novu/jobs?content=true
+    company_name: Novu
+    company_domain: novu.co
+    headcount_bucket: "10 to 50"
+    hq_country: Israel
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Open source notification infra."
+
+  - source_id: greenhouse_appcues
+    source_name: Appcues Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/appcues/jobs?content=true
+    company_name: Appcues
+    company_domain: appcues.com
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Product adoption platform."
+
+  - source_id: greenhouse_incident_io
+    source_name: incident.io Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/incidentio/jobs?content=true
+    company_name: incident.io
+    company_domain: incident.io
+    headcount_bucket: "51 to 100"
+    hq_country: United Kingdom
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Incident management SaaS."
+
+  - source_id: greenhouse_stytch
+    source_name: Stytch Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/stytch/jobs?content=true
+    company_name: Stytch
+    company_domain: stytch.com
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Auth platform for developers."
+
+  - source_id: greenhouse_flatfile
+    source_name: Flatfile Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/flatfile/jobs?content=true
+    company_name: Flatfile
+    company_domain: flatfile.com
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Data onboarding platform."
+
+  - source_id: greenhouse_grafbase
+    source_name: Grafbase Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/grafbase/jobs?content=true
+    company_name: Grafbase
+    company_domain: grafbase.com
+    headcount_bucket: "10 to 50"
+    hq_country: Sweden
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "GraphQL platform. Remote globally."
+
+  - source_id: greenhouse_tinybird
+    source_name: Tinybird Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/tinybird/jobs?content=true
+    company_name: Tinybird
+    company_domain: tinybird.co
+    headcount_bucket: "51 to 100"
+    hq_country: Spain
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Real-time data platform. Remote-first."
+
+  - source_id: greenhouse_axiom
+    source_name: Axiom Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/axiomhq/jobs?content=true
+    company_name: Axiom
+    company_domain: axiom.co
+    headcount_bucket: "10 to 50"
+    hq_country: United Kingdom
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Log management. Globally distributed."
+
+  - source_id: greenhouse_turso
+    source_name: Turso Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/chiselstrike/jobs?content=true
+    company_name: Turso
+    company_domain: turso.tech
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "SQLite for edge. Remote-first."
+
+  - source_id: greenhouse_depot
+    source_name: Depot Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/depot/jobs?content=true
+    company_name: Depot
+    company_domain: depot.dev
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Fast Docker builds. Small remote team."
+
+  - source_id: greenhouse_cerbos
+    source_name: Cerbos Greenhouse
+    source_type: ats_greenhouse
+    source_family: greenhouse
+    api_url: https://boards-api.greenhouse.io/v1/boards/cerbos/jobs?content=true
+    company_name: Cerbos
+    company_domain: cerbos.dev
+    headcount_bucket: "10 to 50"
+    hq_country: United Kingdom
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Authorization platform. Remote globally."
+
+  # ─── LEVER ATS COMPANIES ────────────────────────────────────────────────────
+
+  - source_id: lever_remote_com
+    source_name: Remote.com Lever
+    source_type: ats_lever
+    source_family: lever
+    api_url: https://api.lever.co/v0/postings/remote?mode=json
+    company_name: Remote.com
+    company_domain: remote.com
+    headcount_bucket: "101 to 200"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "HR platform for remote teams. Fully remote."
+
+  - source_id: lever_deel
+    source_name: Deel Lever
+    source_type: ats_lever
+    source_family: lever
+    api_url: https://api.lever.co/v0/postings/deel?mode=json
+    company_name: Deel
+    company_domain: deel.com
+    headcount_bucket: "101 to 200"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Global payroll. Remote worldwide."
+
+  - source_id: lever_loom
+    source_name: Loom Lever
+    source_type: ats_lever
+    source_family: lever
+    api_url: https://api.lever.co/v0/postings/loom?mode=json
+    company_name: Loom
+    company_domain: loom.com
+    headcount_bucket: "101 to 200"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Async video. Remote-first culture."
+
+  - source_id: lever_descript
+    source_name: Descript Lever
+    source_type: ats_lever
+    source_family: lever
+    api_url: https://api.lever.co/v0/postings/descript?mode=json
+    company_name: Descript
+    company_domain: descript.com
+    headcount_bucket: "101 to 200"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Audio/video editing SaaS."
+
+  - source_id: lever_reflect
+    source_name: Reflect Lever
+    source_type: ats_lever
+    source_family: lever
+    api_url: https://api.lever.co/v0/postings/reflectapp?mode=json
+    company_name: Reflect
+    company_domain: reflect.app
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Note-taking app. Small remote team."
+
+  - source_id: lever_cabal
+    source_name: Cabal Lever
+    source_type: ats_lever
+    source_family: lever
+    api_url: https://api.lever.co/v0/postings/cabal?mode=json
+    company_name: Cabal
+    company_domain: cabal.com
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Team coordination platform."
+
+  # ─── ASHBY ATS COMPANIES ────────────────────────────────────────────────────
+
+  - source_id: ashby_zed
+    source_name: Zed Industries Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/zed
+    company_name: Zed Industries
+    company_domain: zed.dev
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "High-performance code editor. Globally distributed."
+
+  - source_id: ashby_replit
+    source_name: Replit Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/replit
+    company_name: Replit
+    company_domain: replit.com
+    headcount_bucket: "101 to 200"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Online IDE. Remote-friendly."
+
+  - source_id: ashby_highlight
+    source_name: Highlight.io Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/highlight
+    company_name: Highlight.io
+    company_domain: highlight.io
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Open source monitoring. Fully remote."
+
+  - source_id: ashby_baseten
+    source_name: Baseten Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/baseten
+    company_name: Baseten
+    company_domain: baseten.co
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "ML model deployment. Remote engineers."
+
+  - source_id: ashby_inngest
+    source_name: Inngest Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/inngest
+    company_name: Inngest
+    company_domain: inngest.com
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Serverless background jobs. Remote first."
+
+  - source_id: ashby_trigger
+    source_name: Trigger.dev Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/triggerdev
+    company_name: Trigger.dev
+    company_domain: trigger.dev
+    headcount_bucket: "10 to 50"
+    hq_country: Ireland
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Open source background jobs. Globally distributed."
+
+  - source_id: ashby_apify
+    source_name: Apify Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/apify
+    company_name: Apify
+    company_domain: apify.com
+    headcount_bucket: "51 to 100"
+    hq_country: Czech Republic
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Web scraping platform. Globally distributed."
+
+  - source_id: ashby_clickhouse
+    source_name: ClickHouse Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/clickhouse
+    company_name: ClickHouse
+    company_domain: clickhouse.com
+    headcount_bucket: "101 to 200"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "OLAP database. Globally distributed."
+
+  - source_id: ashby_wundergraph
+    source_name: WunderGraph Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/wundergraph
+    company_name: WunderGraph
+    company_domain: wundergraph.com
+    headcount_bucket: "10 to 50"
+    hq_country: Germany
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "API gateway. Remote worldwide."
+
+  - source_id: ashby_snaplet
+    source_name: Snaplet Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/snaplet
+    company_name: Snaplet
+    company_domain: snaplet.dev
+    headcount_bucket: "10 to 50"
+    hq_country: South Africa
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "DB snapshot tool. Globally distributed."
+
+  - source_id: ashby_resend
+    source_name: Resend Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/resend
+    company_name: Resend
+    company_domain: resend.com
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Email API for developers. Remote-first."
+
+  - source_id: ashby_unkey
+    source_name: Unkey Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/unkey
+    company_name: Unkey
+    company_domain: unkey.dev
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "API key management. Small distributed team."
+
+  - source_id: ashby_speakeasy
+    source_name: Speakeasy Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/speakeasy-api
+    company_name: Speakeasy
+    company_domain: speakeasyapi.dev
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "SDK generation. Remote-first."
+
+  - source_id: ashby_opik
+    source_name: Comet ML Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/comet-ml
+    company_name: Comet ML
+    company_domain: comet.ml
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "MLOps platform. Remote engineers."
+
+  - source_id: ashby_boundary
+    source_name: Boundary Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/boundary
+    company_name: Boundary ML
+    company_domain: boundary.ml
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "AI safety tooling."
+
+  - source_id: ashby_traceloop
+    source_name: Traceloop Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/traceloop
+    company_name: Traceloop
+    company_domain: traceloop.com
+    headcount_bucket: "10 to 50"
+    hq_country: Israel
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "LLM observability. Remote globally."
+
+  - source_id: ashby_buildkite
+    source_name: Buildkite Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/buildkite
+    company_name: Buildkite
+    company_domain: buildkite.com
+    headcount_bucket: "101 to 200"
+    hq_country: Australia
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "CI/CD platform. Fully distributed."
+
+  - source_id: ashby_trunk
+    source_name: Trunk.io Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/trunk
+    company_name: Trunk.io
+    company_domain: trunk.io
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Dev tooling. Remote-first."
+
+  - source_id: ashby_encore
+    source_name: Encore.dev Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/encore
+    company_name: Encore.dev
+    company_domain: encore.dev
+    headcount_bucket: "10 to 50"
+    hq_country: Sweden
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Backend framework. Globally distributed."
+
+  - source_id: ashby_openbb
+    source_name: OpenBB Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/openbb
+    company_name: OpenBB
+    company_domain: openbb.finance
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Open source fintech. Remote worldwide."
+
+  - source_id: ashby_windmill
+    source_name: Windmill Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/windmill-labs
+    company_name: Windmill Labs
+    company_domain: windmill.dev
+    headcount_bucket: "10 to 50"
+    hq_country: France
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Developer scripts platform. Globally distributed."
+
+  - source_id: ashby_metaplane
+    source_name: Metaplane Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/metaplane
+    company_name: Metaplane
+    company_domain: metaplane.dev
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Data observability. Remote-first."
+
+  - source_id: ashby_roboflow
+    source_name: Roboflow Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/roboflow
+    company_name: Roboflow
+    company_domain: roboflow.com
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Computer vision platform. Remote-first."
+
+  - source_id: ashby_motif
+    source_name: Motif Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/motif-land
+    company_name: Motif
+    company_domain: motif.land
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Docs platform. Small remote team."
+
+  - source_id: ashby_mintlify
+    source_name: Mintlify Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/mintlify
+    company_name: Mintlify
+    company_domain: mintlify.com
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Documentation platform. Remote-first."
+
+  - source_id: ashby_golinks
+    source_name: GoLinks Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/golinks
+    company_name: GoLinks
+    company_domain: golinks.io
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Link management. Remote-friendly."
+
+  - source_id: ashby_papermark
+    source_name: Papermark Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/papermark
+    company_name: Papermark
+    company_domain: papermark.io
+    headcount_bucket: "10 to 50"
+    hq_country: Germany
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Open source DocSend alt. Remote worldwide."
+
+  - source_id: ashby_documenso
+    source_name: Documenso Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/documenso
+    company_name: Documenso
+    company_domain: documenso.com
+    headcount_bucket: "10 to 50"
+    hq_country: Germany
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Open source DocuSign. Globally distributed."
+
+  - source_id: ashby_formbricks
+    source_name: Formbricks Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/formbricks
+    company_name: Formbricks
+    company_domain: formbricks.com
+    headcount_bucket: "10 to 50"
+    hq_country: Germany
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Open source survey. Remote worldwide."
+
+  - source_id: ashby_dyrector
+    source_name: Dyrector Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/dyrector-io
+    company_name: dyrector.io
+    company_domain: dyrector.io
+    headcount_bucket: "10 to 50"
+    hq_country: Hungary
+    target_market_fit: high
+    trust_score: 9
+    enabled: true
+    notes: "Container management. Remote worldwide."
+
+  - source_id: ashby_outerbase
+    source_name: Outerbase Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/outerbase
+    company_name: Outerbase
+    company_domain: outerbase.com
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Database UI. Remote-first."
+
+  - source_id: ashby_logfire
+    source_name: Pydantic Logfire Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/pydantic
+    company_name: Pydantic
+    company_domain: pydantic.dev
+    headcount_bucket: "10 to 50"
+    hq_country: United Kingdom
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Python validation library + Logfire. Remote worldwide."
+
+  - source_id: ashby_modal
+    source_name: Modal Labs Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/modal-labs
+    company_name: Modal Labs
+    company_domain: modal.com
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Cloud compute for ML. Remote-first."
+
+  - source_id: ashby_replicate
+    source_name: Replicate Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/replicate
+    company_name: Replicate
+    company_domain: replicate.com
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "ML model hosting. Remote worldwide."
+
+  - source_id: ashby_fal
+    source_name: fal.ai Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/fal
+    company_name: fal.ai
+    company_domain: fal.ai
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "AI inference platform. Remote-first."
+
+  - source_id: ashby_vapi
+    source_name: Vapi Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/vapi
+    company_name: Vapi
+    company_domain: vapi.ai
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Voice AI platform. Remote-first."
+
+  - source_id: ashby_qdrant
+    source_name: Qdrant Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/qdrant
+    company_name: Qdrant
+    company_domain: qdrant.tech
+    headcount_bucket: "51 to 100"
+    hq_country: Germany
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Vector database. Globally distributed."
+
+  - source_id: ashby_chroma
+    source_name: Chroma Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/chroma-core
+    company_name: Chroma
+    company_domain: trychroma.com
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "AI-native vector DB. Remote-first."
+
+  - source_id: ashby_weaviate
+    source_name: Weaviate Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/weaviate
+    company_name: Weaviate
+    company_domain: weaviate.io
+    headcount_bucket: "51 to 100"
+    hq_country: Netherlands
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Vector database. Globally distributed."
+
+  - source_id: ashby_pinecone
+    source_name: Pinecone Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/pinecone
+    company_name: Pinecone
+    company_domain: pinecone.io
+    headcount_bucket: "101 to 200"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Vector database. Remote-friendly."
+
+  - source_id: ashby_marqo
+    source_name: Marqo Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/marqo
+    company_name: Marqo
+    company_domain: marqo.ai
+    headcount_bucket: "10 to 50"
+    hq_country: Australia
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Tensor search. Globally distributed."
+
+  - source_id: ashby_lancedb
+    source_name: LanceDB Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/lancedb
+    company_name: LanceDB
+    company_domain: lancedb.com
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Serverless vector DB. Remote-first."
+
+  - source_id: ashby_activepieces
+    source_name: Activepieces Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/activepieces
+    company_name: Activepieces
+    company_domain: activepieces.com
+    headcount_bucket: "10 to 50"
+    hq_country: Egypt
+    target_market_fit: high
+    trust_score: 9
+    enabled: true
+    notes: "Open source Zapier. Remote worldwide."
+
+  - source_id: ashby_n8n
+    source_name: n8n Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/n8n
+    company_name: n8n
+    company_domain: n8n.io
+    headcount_bucket: "51 to 100"
+    hq_country: Germany
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Workflow automation. Globally distributed."
+
+  - source_id: ashby_temporal
+    source_name: Temporal Technologies Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/temporal-technologies
+    company_name: Temporal Technologies
+    company_domain: temporal.io
+    headcount_bucket: "101 to 200"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Workflow orchestration. Remote-first."
+
+  - source_id: ashby_buf
+    source_name: Buf Technologies Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/buf
+    company_name: Buf Technologies
+    company_domain: buf.build
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Protobuf tooling. Remote worldwide."
+
+  - source_id: ashby_dagger
+    source_name: Dagger Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/dagger
+    company_name: Dagger
+    company_domain: dagger.io
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "CI/CD as code. Remote worldwide."
+
+  - source_id: ashby_earthly
+    source_name: Earthly Technologies Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/earthly
+    company_name: Earthly Technologies
+    company_domain: earthly.dev
+    headcount_bucket: "10 to 50"
+    hq_country: Canada
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Build automation. Globally distributed."
+
+  - source_id: ashby_tilt
+    source_name: Tilt Dev Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/tilt-dev
+    company_name: Tilt Dev
+    company_domain: tilt.dev
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Dev environment tooling."
+
+  - source_id: ashby_stackhawk
+    source_name: StackHawk Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/stackhawk
+    company_name: StackHawk
+    company_domain: stackhawk.com
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "AppSec testing. Remote-first."
+
+  - source_id: ashby_snyk
+    source_name: Snyk Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/snyk
+    company_name: Snyk
+    company_domain: snyk.io
+    headcount_bucket: "101 to 200"
+    hq_country: United Kingdom
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Security platform. Remote-friendly."
+
+  - source_id: ashby_semgrep
+    source_name: Semgrep Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/semgrep
+    company_name: Semgrep
+    company_domain: semgrep.dev
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Code security scanner. Remote worldwide."
+
+  - source_id: ashby_featurebase
+    source_name: Featurebase Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/featurebase
+    company_name: Featurebase
+    company_domain: featurebase.app
+    headcount_bucket: "10 to 50"
+    hq_country: Estonia
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Product feedback. Remote worldwide."
+
+  - source_id: ashby_coolify
+    source_name: Coolify Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/coolify
+    company_name: Coolify
+    company_domain: coolify.io
+    headcount_bucket: "10 to 50"
+    hq_country: Hungary
+    target_market_fit: high
+    trust_score: 9
+    enabled: true
+    notes: "Self-hosting platform. Remote worldwide."
+
+  - source_id: ashby_clerkdev
+    source_name: Clerk Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/clerk
+    company_name: Clerk
+    company_domain: clerk.com
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Auth and user management. Remote-first."
+
+  - source_id: ashby_workos
+    source_name: WorkOS Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/workos
+    company_name: WorkOS
+    company_domain: workos.com
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Enterprise auth APIs. Remote-first."
+
+  - source_id: ashby_neon
+    source_name: Neon Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/neon-tech
+    company_name: Neon
+    company_domain: neon.tech
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Serverless Postgres. Remote worldwide."
+
+  - source_id: ashby_xata
+    source_name: Xata Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/xata
+    company_name: Xata
+    company_domain: xata.io
+    headcount_bucket: "10 to 50"
+    hq_country: Romania
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Serverless database. Globally distributed."
+
+  - source_id: ashby_render
+    source_name: Render Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/render
+    company_name: Render
+    company_domain: render.com
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Cloud hosting. Remote-first."
+
+  - source_id: ashby_railway
+    source_name: Railway Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/railway
+    company_name: Railway
+    company_domain: railway.app
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Deployment platform. Remote worldwide."
+
+  - source_id: ashby_fly_io
+    source_name: Fly.io Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/fly-io
+    company_name: Fly.io
+    company_domain: fly.io
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Edge hosting. Remote worldwide."
+
+  - source_id: ashby_shuttle
+    source_name: Shuttle Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/shuttle
+    company_name: Shuttle
+    company_domain: shuttle.rs
+    headcount_bucket: "10 to 50"
+    hq_country: United Kingdom
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Rust backend platform. Remote worldwide."
+
+  - source_id: ashby_ampt
+    source_name: Ampt Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/ampt
+    company_name: Ampt
+    company_domain: getampt.com
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 9
+    enabled: true
+    notes: "Serverless platform. Remote worldwide."
+
+  - source_id: ashby_nitric
+    source_name: Nitric Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/nitric
+    company_name: Nitric
+    company_domain: nitric.io
+    headcount_bucket: "10 to 50"
+    hq_country: Australia
+    target_market_fit: high
+    trust_score: 9
+    enabled: true
+    notes: "Cloud framework. Remote worldwide."
+
+  - source_id: ashby_supertokens
+    source_name: SuperTokens Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/supertokens
+    company_name: SuperTokens
+    company_domain: supertokens.com
+    headcount_bucket: "10 to 50"
+    hq_country: India
+    target_market_fit: high
+    trust_score: 9
+    enabled: true
+    notes: "Open source auth. Global hiring."
+
+  - source_id: ashby_logto
+    source_name: Logto Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/logto
+    company_name: Logto
+    company_domain: logto.io
+    headcount_bucket: "10 to 50"
+    hq_country: Singapore
+    target_market_fit: high
+    trust_score: 9
+    enabled: true
+    notes: "Open source auth. Globally distributed."
+
+  - source_id: ashby_hanko
+    source_name: Hanko Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/hanko
+    company_name: Hanko
+    company_domain: hanko.io
+    headcount_bucket: "10 to 50"
+    hq_country: Germany
+    target_market_fit: high
+    trust_score: 9
+    enabled: true
+    notes: "Passkey auth. Remote worldwide."
+
+  - source_id: ashby_ory
+    source_name: Ory Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/ory
+    company_name: Ory
+    company_domain: ory.sh
+    headcount_bucket: "51 to 100"
+    hq_country: Germany
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Open source identity. Globally distributed."
+
+  - source_id: ashby_chainguard
+    source_name: Chainguard Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/chainguard
+    company_name: Chainguard
+    company_domain: chainguard.dev
+    headcount_bucket: "101 to 200"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Supply chain security. Remote worldwide."
+
+  - source_id: ashby_teleport
+    source_name: Teleport Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/teleport
+    company_name: Teleport
+    company_domain: goteleport.com
+    headcount_bucket: "101 to 200"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Infrastructure access. Globally distributed."
+
+  - source_id: ashby_tinybird2
+    source_name: Tinybird Extra Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/tinybird
+    company_name: Tinybird
+    company_domain: tinybird.co
+    headcount_bucket: "51 to 100"
+    hq_country: Spain
+    target_market_fit: high
+    trust_score: 10
+    enabled: false
+    notes: "Duplicate of tinybird, disabled."
+
+  - source_id: ashby_convex
+    source_name: Convex Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/convex
+    company_name: Convex
+    company_domain: convex.dev
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Backend platform. Remote worldwide."
+
+  - source_id: ashby_electric_sql
+    source_name: Electric SQL Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/electric-sql
+    company_name: Electric SQL
+    company_domain: electric-sql.com
+    headcount_bucket: "10 to 50"
+    hq_country: United Kingdom
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Local-first sync. Remote worldwide."
+
+  - source_id: ashby_evolu
+    source_name: Evolu Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/evolu
+    company_name: Evolu
+    company_domain: evolu.dev
+    headcount_bucket: "10 to 50"
+    hq_country: Czech Republic
+    target_market_fit: high
+    trust_score: 9
+    enabled: true
+    notes: "Local-first framework. Remote worldwide."
+
+  - source_id: ashby_featureflag_io
+    source_name: Flagsmith Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/flagsmith
+    company_name: Flagsmith
+    company_domain: flagsmith.com
+    headcount_bucket: "10 to 50"
+    hq_country: United Kingdom
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Feature flagging. Remote worldwide."
+
+  - source_id: ashby_statsig
+    source_name: Statsig Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/statsig
+    company_name: Statsig
+    company_domain: statsig.com
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Feature flags and experimentation. Remote-friendly."
+
+  - source_id: ashby_growthbook
+    source_name: GrowthBook Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/growthbook
+    company_name: GrowthBook
+    company_domain: growthbook.io
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Open source A/B testing. Remote worldwide."
+
+  - source_id: ashby_coderabbit
+    source_name: CodeRabbit Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/coderabbit
+    company_name: CodeRabbit
+    company_domain: coderabbit.ai
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "AI code review. Remote worldwide."
+
+  - source_id: ashby_sweep
+    source_name: Sweep AI Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/sweep-ai
+    company_name: Sweep AI
+    company_domain: sweep.dev
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "AI coding assistant. Remote-first."
+
+  - source_id: ashby_devin
+    source_name: Cognition AI Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/cognition-labs
+    company_name: Cognition AI
+    company_domain: cognition.ai
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "AI software engineering. Remote worldwide."
+
+  - source_id: ashby_maybe
+    source_name: Maybe Finance Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/maybe-finance
+    company_name: Maybe Finance
+    company_domain: maybe.co
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Open source personal finance. Remote worldwide."
+
+  - source_id: ashby_lago
+    source_name: Lago Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/lago
+    company_name: Lago
+    company_domain: getlago.com
+    headcount_bucket: "10 to 50"
+    hq_country: France
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Open source billing. Remote worldwide."
+
+  - source_id: ashby_orb
+    source_name: Orb Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/orb
+    company_name: Orb
+    company_domain: withorb.com
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Usage-based billing. Remote-first."
+
+  - source_id: ashby_stigg
+    source_name: Stigg Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/stigg
+    company_name: Stigg
+    company_domain: stigg.io
+    headcount_bucket: "10 to 50"
+    hq_country: Israel
+    target_market_fit: high
+    trust_score: 9
+    enabled: true
+    notes: "Pricing and packaging platform."
+
+  - source_id: ashby_infisical
+    source_name: Infisical Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/infisical
+    company_name: Infisical
+    company_domain: infisical.com
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Secrets management. Remote worldwide."
+
+  - source_id: ashby_doppler
+    source_name: Doppler Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/doppler
+    company_name: Doppler
+    company_domain: doppler.com
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Secrets management. Remote-first."
+
+  - source_id: ashby_vault_1password
+    source_name: 1Password Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/1password
+    company_name: 1Password
+    company_domain: 1password.com
+    headcount_bucket: "101 to 200"
+    hq_country: Canada
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Password manager. Remote worldwide."
+
+  - source_id: ashby_pieces
+    source_name: Pieces for Developers Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/pieces-for-developers
+    company_name: Pieces for Developers
+    company_domain: pieces.app
+    headcount_bucket: "10 to 50"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "AI-powered developer copilot. Remote-first."
+
+  - source_id: ashby_codeium
+    source_name: Codeium Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/codeium
+    company_name: Codeium
+    company_domain: codeium.com
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "AI coding. Remote-friendly."
+
+  - source_id: ashby_tabnine
+    source_name: Tabnine Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/tabnine
+    company_name: Tabnine
+    company_domain: tabnine.com
+    headcount_bucket: "101 to 200"
+    hq_country: Israel
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "AI code completion. Remote worldwide."
+
+  - source_id: ashby_sourcery
+    source_name: Sourcery Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/sourcery
+    company_name: Sourcery
+    company_domain: sourcery.ai
+    headcount_bucket: "10 to 50"
+    hq_country: United Kingdom
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "AI code review. Remote worldwide."
+
+  - source_id: ashby_deepsource
+    source_name: DeepSource Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/deepsource
+    company_name: DeepSource
+    company_domain: deepsource.io
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Code quality. Remote worldwide."
+
+  - source_id: ashby_mergify
+    source_name: Mergify Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/mergify
+    company_name: Mergify
+    company_domain: mergify.com
+    headcount_bucket: "10 to 50"
+    hq_country: France
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "PR automation. Remote worldwide."
+
+  - source_id: ashby_gitguardian
+    source_name: GitGuardian Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/gitguardian
+    company_name: GitGuardian
+    company_domain: gitguardian.com
+    headcount_bucket: "101 to 200"
+    hq_country: France
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Secret detection. Remote worldwide."
+
+  - source_id: ashby_sokrates
+    source_name: Sokrates Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/sokrates
+    company_name: Sokrates
+    company_domain: sokrates.dev
+    headcount_bucket: "10 to 50"
+    hq_country: Netherlands
+    target_market_fit: high
+    trust_score: 9
+    enabled: true
+    notes: "Software analytics. Remote worldwide."
+
+  - source_id: ashby_athenian
+    source_name: Athenian Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/athenian
+    company_name: Athenian
+    company_domain: athenian.co
+    headcount_bucket: "10 to 50"
+    hq_country: Spain
+    target_market_fit: high
+    trust_score: 9
+    enabled: true
+    notes: "Engineering metrics. Remote worldwide."
+
+  - source_id: ashby_swarmia
+    source_name: Swarmia Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/swarmia
+    company_name: Swarmia
+    company_domain: swarmia.com
+    headcount_bucket: "10 to 50"
+    hq_country: Finland
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Engineering productivity. Remote worldwide."
+
+  - source_id: ashby_linearb
+    source_name: LinearB Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/linearb
+    company_name: LinearB
+    company_domain: linearb.io
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Engineering metrics. Remote worldwide."
+
+  - source_id: ashby_getport
+    source_name: Port Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/port-io
+    company_name: Port
+    company_domain: getport.io
+    headcount_bucket: "51 to 100"
+    hq_country: Israel
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Internal developer portal. Remote worldwide."
+
+  - source_id: ashby_cortex
+    source_name: Cortex Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/cortex
+    company_name: Cortex
+    company_domain: cortex.io
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Engineering catalog. Remote worldwide."
+
+  - source_id: ashby_opslevel
+    source_name: OpsLevel Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/opslevel
+    company_name: OpsLevel
+    company_domain: opslevel.com
+    headcount_bucket: "10 to 50"
+    hq_country: Canada
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Service catalog. Remote worldwide."
+
+  - source_id: ashby_incident_management_io
+    source_name: Rootly Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/rootly
+    company_name: Rootly
+    company_domain: rootly.com
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Incident management. Remote worldwide."
+
+  - source_id: ashby_firehydrant
+    source_name: FireHydrant Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/firehydrant
+    company_name: FireHydrant
+    company_domain: firehydrant.com
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 10
+    enabled: true
+    notes: "Reliability platform. Remote-first."
+
+  - source_id: ashby_blameless
+    source_name: Blameless Ashby
+    source_type: ats_ashby
+    source_family: ashby
+    api_url: https://api.ashbyhq.com/posting-api/job-board/blameless
+    company_name: Blameless
+    company_domain: blameless.com
+    headcount_bucket: "51 to 100"
+    hq_country: United States
+    target_market_fit: high
+    trust_score: 9
+    enabled: true
+    notes: "SRE platform. Remote-friendly."
