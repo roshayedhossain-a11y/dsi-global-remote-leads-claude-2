@@ -1,0 +1,95 @@
+name: DSI Elite ICP Job Collector
+
+on:
+  schedule:
+    # Run daily at 06:00 UTC
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+    inputs:
+      debug:
+        description: "Enable debug logging"
+        required: false
+        default: "false"
+
+permissions:
+  contents: read
+
+jobs:
+  collect:
+    name: Collect ICP Jobs
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run pytest (filter validation)
+        run: |
+          pip install pytest
+          pytest tests/test_filters.py -v --tb=short
+        continue-on-error: false
+
+      - name: Run ICP collector
+        env:
+          PYTHONUNBUFFERED: "1"
+          LOG_LEVEL: ${{ github.event.inputs.debug == 'true' && 'DEBUG' || 'INFO' }}
+        run: |
+          python dsi_scraper_elite.py 2>&1
+
+      - name: Verify output file exists and has valid structure
+        run: |
+          python - <<'EOF'
+          import glob, sys, pandas as pd, os
+          files = glob.glob("FINAL_USE_THIS_ONLY_*.csv")
+          if not files:
+              print("ERROR: No output CSV found!")
+              sys.exit(1)
+          f = files[0]
+          df = pd.read_csv(f)
+          print(f"Output file: {f}")
+          print(f"Rows: {len(df)}")
+          if len(df) > 0:
+              # Validate required columns exist
+              required = [
+                  "quality_tier","company_name","company_domain",
+                  "company_headcount_bucket","job_title","role_family",
+                  "remote_proof","job_url","posted_date","days_old","dsi_icp_score"
+              ]
+              for col in required:
+                  assert col in df.columns, f"Missing column: {col}"
+              # Validate all rows are A tier
+              bad_tier = df[df["quality_tier"] != "A_STRICT_DSI_ICP"]
+              assert len(bad_tier) == 0, f"{len(bad_tier)} rows are not A_STRICT_DSI_ICP"
+              # Validate no unknown headcount
+              bad_hc = df[~df["company_headcount_bucket"].isin(["10 to 50","51 to 100","101 to 200"])]
+              assert len(bad_hc) == 0, f"{len(bad_hc)} rows have invalid headcount"
+              # Validate freshness
+              bad_fresh = df[df["days_old"] > 21]
+              assert len(bad_fresh) == 0, f"{len(bad_fresh)} stale rows found"
+              # Validate score
+              bad_score = df[df["dsi_icp_score"] < 85]
+              assert len(bad_score) == 0, f"{len(bad_score)} rows below min score"
+              print("All validation checks passed.")
+          else:
+              print("No rows in output. CSV headers only.")
+          EOF
+
+      - name: Upload final CSV artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dsi-icp-jobs-${{ github.run_id }}
+          path: FINAL_USE_THIS_ONLY_*.csv
+          retention-days: 30
+          if-no-files-found: warn
