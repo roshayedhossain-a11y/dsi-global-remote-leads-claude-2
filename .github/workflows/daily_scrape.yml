@@ -38,7 +38,7 @@ jobs:
       - name: Run pytest (filter validation)
         run: |
           pip install pytest
-          pytest tests/test_filters.py -v --tb=short
+          PYTHONPATH=. pytest tests/test_filters.py -v --tb=short
         continue-on-error: false
 
       - name: Run ICP collector
